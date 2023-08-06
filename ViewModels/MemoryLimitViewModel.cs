@@ -35,22 +35,19 @@ namespace Test_Assignment.ViewModels
             CallMemoryLimitCommand = new RelayCommand(SetMemoryLimitExecute, true);
             
         }
-
-
-
         private void SetMemoryLimitExecute()
         {
          
             try
             {
-                // Перевіряємо, чи нове значення не перевищує максимальний ліміт
+                
                 if (memoryLimit.NewMemoryLimitBytes < currentProcess.PagedSystemMemorySize64 )
                 {
-                    // Встановлюємо новий ліміт пам'яті
+                    
                     IntPtr newMemoryLimit = new IntPtr(memoryLimit.NewMemoryLimitBytes );
                     currentProcess.MaxWorkingSet = newMemoryLimit;
 
-                    // Оновлюємо властивість MaxMemoryLimit в ViewModel, щоб відображення вікна оновилося
+                   
                     memoryLimit.MaxMemoryLimit = memoryLimit.NewMemoryLimitBytes;
 
                     MessageBox.Show("New memory limit set successful");

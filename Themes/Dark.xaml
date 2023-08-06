@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Test_Assignment.Themes">
+    <SolidColorBrush Color="#363C46" x:Key="BackDrop"/>
+    <SolidColorBrush Color="#F0F0F0" x:Key="Text"/>
+    <SolidColorBrush Color="#353b48" x:Key="Card"/>
+    
+    
+    <Style TargetType="Grid">
+        <Setter Property="Background" Value="{StaticResource BackDrop}"/>
+        <Setter Property="Background" Value="{StaticResource Card}"/>
+    </Style>
+    
+</ResourceDictionary>
