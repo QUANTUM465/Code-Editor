@@ -1,0 +1,32 @@
+﻿<Window x:Class="Test_Assignment.Views.MemoryLimitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test_Assignment.ViewModels"
+        xmlns:models="clr-namespace:Test_Assignment.Models"
+        mc:Ignorable="d"
+        Title="Memory Limit" Height="212" Width="332">
+
+    <Window.DataContext>
+        <local:MemoryLimitViewModel/>
+    </Window.DataContext>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" CanExecute="CommandBinding_CanExecute_Close" Executed="CommandBinding_Executed_Close" />
+    </Window.CommandBindings>
+
+
+    <Grid>
+        <TextBlock x:Name="CurrentMemoryLimitTextBox" Text="{Binding CurrentMemoryLimit, UpdateSourceTrigger=PropertyChanged }" 
+                 HorizontalAlignment="Left" Height="Auto" Margin="180,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="Black" Background="#FFDFDDDD" IsEnabled="False"/>
+        <TextBox x:Name="NewMemoryLimitTextBox" Text="{Binding EnteredMemoryLimit, UpdateSourceTrigger=PropertyChanged}" 
+                   HorizontalAlignment="Left" Height="Auto" Margin="180,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFDFDDDD"/>
+        <Button x:Name="CloseWindow" Content="Close" Command="Close" HorizontalAlignment="Left" Height="32" Margin="10,139,0,0" VerticalAlignment="Top" Width="101"/>
+        <Button x:Name="SetNewMemoryLimit" Command="{Binding CallMemoryLimitCommand}" Content="Set"  HorizontalAlignment="Left" Height="32" Margin="194,139,0,0" VerticalAlignment="Top" Width="110"/>
+        <Label Content="Current memory limit: " HorizontalAlignment="Left" Height="Auto" Margin="25,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Set new memory limit: " HorizontalAlignment="Left" Height="Auto" Margin="25,50,0,0" VerticalAlignment="Top" Width="Auto"/>
+            
+
+    </Grid>
+</Window>
