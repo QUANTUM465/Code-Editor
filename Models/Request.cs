@@ -66,14 +66,9 @@ namespace Test_Assignment.Models
             var CLIENT_SECRET = "74fdf0793d7872882895afa555059b74a9cf45d5";
             var url = "https://api.hackerearth.com/v4/partner/code-evaluation/submissions/";
             client.DefaultRequestHeaders.Add("client-secret", CLIENT_SECRET);
-            //Creating json that contains data for API request
-
-
-
-            //File.WriteAllText(@"D:\Projects\VIsualStudio\Test Assignment\Test Assignment.csproj", json);
 
             var response = client.GetAsync(url).Result; // get response by address
-            //var response = client.PostAsJsonAsync(url, content);
+
             var json = response.Content.ReadAsStringAsync().Result;
         }
     }
