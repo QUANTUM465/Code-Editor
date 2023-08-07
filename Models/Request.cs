@@ -49,12 +49,9 @@ namespace Test_Assignment.Models
             this.source = source;
         }
 
-
+        string id = "5bf05f4a75e77834c2366feda057d0bd77a18deebfe8.api.hackerearth.com";
         public void CreateRequest(Request request)
         {
-
-            //TODO::Make API request
-
             var content = new
             {
                 source = this.source,
@@ -62,21 +59,22 @@ namespace Test_Assignment.Models
                 input = this.input,
                 memory_limit = this.memory_limit,
                 time_limit = this.time_limit,
-                context = this.context,
+                context = "id " + id,
                 callback = this.callback,
-                id = "client-001" // Replace this with a unique id for your request
             };
-            var CLIENT_SECRET = "d831da60a033e2024c29644361e48b866064ca62";
+            var client = new HttpClient();
+            var CLIENT_SECRET = "74fdf0793d7872882895afa555059b74a9cf45d5";
             var url = "https://api.hackerearth.com/v4/partner/code-evaluation/submissions/";
-            string headers = $"client-secret: {CLIENT_SECRET}";
-
+            client.DefaultRequestHeaders.Add("client-secret", CLIENT_SECRET);
             //Creating json that contains data for API request
 
-            
+
+
             //File.WriteAllText(@"D:\Projects\VIsualStudio\Test Assignment\Test Assignment.csproj", json);
-            var client = new HttpClient();
-            var response = client.PostAsJsonAsync(url, content);
-            var text = response.Result.ToString();
+
+            var response = client.GetAsync(url).Result; // get response by address
+            //var response = client.PostAsJsonAsync(url, content);
+            var json = response.Content.ReadAsStringAsync().Result;
         }
     }
 }
