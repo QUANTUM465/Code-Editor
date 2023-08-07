@@ -49,7 +49,6 @@ namespace Test_Assignment.Models
             this.source = source;
         }
 
-        string id = "5bf05f4a75e77834c2366feda057d0bd77a18deebfe8.api.hackerearth.com";
         public void CreateRequest(Request request)
         {
             var content = new
@@ -63,7 +62,6 @@ namespace Test_Assignment.Models
                 callback = this.callback,
             };
             var client = new HttpClient();
-            var CLIENT_SECRET = "74fdf0793d7872882895afa555059b74a9cf45d5";
             var url = "https://api.hackerearth.com/v4/partner/code-evaluation/submissions/";
             client.DefaultRequestHeaders.Add("client-secret", CLIENT_SECRET);
 

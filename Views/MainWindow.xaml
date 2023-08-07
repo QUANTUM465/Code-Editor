@@ -77,9 +77,6 @@
                 <DataTemplate >
                     <StackPanel>
                         <TextBlock Text="{Binding Path= GetSetLanguage}" 
-                                  
-                                   
-                                   
                                    />
                     </StackPanel>
                 </DataTemplate>
