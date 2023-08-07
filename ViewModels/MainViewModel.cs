@@ -18,6 +18,7 @@ using System.Reflection;
 using System.IO;
 using System.Text;
 using Microsoft.Win32;
+using TestAssignment;
 
 namespace Test_Assignment.ViewModels
 {
@@ -92,12 +93,12 @@ namespace Test_Assignment.ViewModels
             memoryLimitWindow.Show();
         }
 
-        private static bool IsLightTheme()
-        {
-            using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
-            var value = key?.GetValue("AppsUseLightTheme");
-            return value is int i && i > 0;
-        }
+        //private static bool IsLightTheme()
+        //{
+        //    using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
+        //    var value = key?.GetValue("AppsUseLightTheme");
+        //    return value is int i && i > 0;
+        //}
 
 
         public event PropertyChangedEventHandler PropertyChanged;

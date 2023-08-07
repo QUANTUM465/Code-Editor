@@ -27,21 +27,14 @@ namespace TestAssignment
         private string Language;
         private string Argument;
 
-        public string GetLanguage 
+        public string GetSetLanguage 
         {
             get { return Language; }
-            
-        }
-        public string SetLanguage 
-        {
             set { Language = value; }
         }
-        public string GetArgument 
+        public string GetSetArgument 
         {
             get { return Argument; }
-        }
-        public string SetArgument 
-        {
             set { Argument = value; }
         }
 

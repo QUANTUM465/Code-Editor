@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Test_Assignment.ViewModels;
 using TestAssignment;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Test_Assignment.Models
 {
@@ -45,38 +37,46 @@ namespace Test_Assignment.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-       public Request()
+       public Request( string lang, string source, string input, int memory_limit, int time_limit, string context, string callback)
         {
-            
+           
+            this.lang = lang;
+            this.input = input;
+            this.memory_limit = memory_limit;
+            this.time_limit = time_limit;
+            this.context = context;
+            this.callback = callback;
+            this.source = source;
         }
 
-        public void CreateRequest()
+
+        public void CreateRequest(Request request)
         {
-            LanguageForAPI forAPI = new LanguageForAPI();
 
             //TODO::Make API request
 
-            Request request = new Request
+            var content = new
             {
-                lang = forAPI.GetArgument,
-                source = MainViewModel.Code,
-                input = "",
-                memory_limit = 262144,
-                time_limit = 5,
-                context = "",
-                callback = ""
+                source = this.source,
+                lang = this.lang,
+                input = this.input,
+                memory_limit = this.memory_limit,
+                time_limit = this.time_limit,
+                context = this.context,
+                callback = this.callback,
+                id = "client-001" // Replace this with a unique id for your request
             };
             var CLIENT_SECRET = "d831da60a033e2024c29644361e48b866064ca62";
             var url = "https://api.hackerearth.com/v4/partner/code-evaluation/submissions/";
             string headers = $"client-secret: {CLIENT_SECRET}";
 
             //Creating json that contains data for API request
-            var json = JsonConvert.SerializeObject(request, Formatting.Indented);
 
+            
             //File.WriteAllText(@"D:\Projects\VIsualStudio\Test Assignment\Test Assignment.csproj", json);
             var client = new HttpClient();
-            var response = client.PostAsJsonAsync(url, json).ToString;
-
+            var response = client.PostAsJsonAsync(url, content);
+            var text = response.Result.ToString();
         }
     }
 }
