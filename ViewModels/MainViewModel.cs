@@ -46,14 +46,16 @@ namespace Test_Assignment.ViewModels
 
         }
         // Get Set for TextBox binding
-        public string DataFromTextBox 
+        public string DataFromTextBox
         {
             get { return _dataFromTextBox; }
-            set { _dataFromTextBox = value;
+            set
+            {
+                _dataFromTextBox = value;
                 OnPropertyChanged(nameof(_dataFromTextBox));
             }
         }
-        
+
         public MainViewModel()
         {
             Languages = LanguageForAPI.GetLanguages();
@@ -66,9 +68,10 @@ namespace Test_Assignment.ViewModels
         // creating the object of Request class, for making API
         private void CallRequest()
         {
+
             Request request = new Request
             (
-                lang: SelectedLanguageForAPI.GetSetLanguage,
+                lang: SelectedLanguageForAPI.GetSetArgument,
                 source: DataFromTextBox,
                 input: "",
                 memory_limit: 262144,
@@ -77,6 +80,8 @@ namespace Test_Assignment.ViewModels
                 callback: ""
             );
             request.CreateRequest(request);
+
+
         }
 
         //Show new window to enter time limit
@@ -93,14 +98,6 @@ namespace Test_Assignment.ViewModels
             memoryLimitWindow.Show();
         }
 
-        //private static bool IsLightTheme()
-        //{
-        //    using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
-        //    var value = key?.GetValue("AppsUseLightTheme");
-        //    return value is int i && i > 0;
-        //}
-
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
@@ -111,3 +108,4 @@ namespace Test_Assignment.ViewModels
 
     }
 }
+
